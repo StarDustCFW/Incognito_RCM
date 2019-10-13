@@ -304,7 +304,8 @@ bool dump_keys()
     readData((u8 *)serial, 0x250, 14, NULL);
 
     gfx_printf("%kCurrent serial:%s\n\n", COLOR_BLUE, serial);
-
+	void *bifer = serial;
+	sd_save_to_file(bifer, strlen(serial), "/StarDust/Serial.txt");
     return true;
 }
 
@@ -757,6 +758,8 @@ bool verifyProdinfo(u8 *blob)
         }
 
         gfx_printf("%kVerification successful!\n%kSerial:%s\n", COLOR_GREEN, COLOR_BLUE, serial);
+		void *bifer = serial;
+		sd_save_to_file(bifer, strlen(serial), "/StarDust/Serial.txt");
         return true;
     }
     gfx_printf("%kVerification not successful!\n", COLOR_RED);
